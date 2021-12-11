@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs, Table, Button, Input } from 'antd';
-import { PaneWindowsTab } from '../../types/ui-components/index'
-import styles from '../../styles/Home.module.css'
+import { PaneWindowsTab } from '../types/ui-components/index'
+import styles from '../styles/Home.module.css'
 
 const { TabPane } = Tabs;
 

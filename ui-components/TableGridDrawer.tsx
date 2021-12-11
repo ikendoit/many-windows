@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '../../styles/Home.module.css'
-import {PaneWindowCoordinates} from '../../types/ui-components/index'
+import styles from '../styles/Home.module.css'
+import {PaneWindowCoordinates} from '../types/ui-components/index'
 
 interface TableGridDrawerProps {
     paneWindowsCoordinates: PaneWindowCoordinates[]
