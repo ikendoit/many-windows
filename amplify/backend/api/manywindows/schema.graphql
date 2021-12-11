@@ -1,0 +1,6 @@
+type TabGroups @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  data: AWSJSON
+  url: String
+  access_password_hash: String
+}
