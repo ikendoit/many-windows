@@ -1,6 +1,6 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import { Button } from 'antd'
+import { Button, message } from 'antd'
 import Head from 'next/head'
 import Image from 'next/image'
 import { TabGroupShowWindowOrganization } from '../ui-components/TabGroupShowWindowOrganization'
@@ -84,16 +84,29 @@ const Home: NextPage = () => {
     windowPanes.forEach(windowPane => {
       const height = windowPane.se[0] - windowPane.nw[0]
       const width = windowPane.se[1] - windowPane.nw[1]
-      openedWindows.push(window.open(windowPane.link, windowPane.title, configStringGenerate(
+      const windowRef = window.open(windowPane.link, '_blank', configStringGenerate(
         unitCellHeight * height, 
         unitCellWidth * width + unitCellWidth, 
         unitCellHeight * windowPane.nw[0], 
         unitCellWidth * windowPane.nw[1]
-      )));
+      ));
+
+      if (windowRef === null) {
+        if (openedWindows[0] != null) {
+          openedWindows[0].close()
+        }
+
+        message.error(
+          <div>
+            <p> Please enable Popup </p>
+            <Image src="/enable-popups.png" alt="Enable Popup Guide" width={1500} height={500} />
+          </div>,
+          10
+        )
+      }
+      openedWindows.push(windowRef)
     })
     setOpenedWindows([...openedWindows]);
-
-    console.log(openedWindows)
 
   }
 
@@ -103,11 +116,10 @@ const Home: NextPage = () => {
       const currentWindow: any = openedWindows[wdIndex];
       currentWindow.close();
     }
-    setOpenedWindows([]);
+    openedWindows.splice(0);
+    setOpenedWindows(openedWindows);
 
   }
-
-  console.log(openedWindows)
 
   return (
     <div className={styles.container}>
