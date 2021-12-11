@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { useRouter } from 'next/router'
 type Data = {
-  name: string
+  message: string
 }
 
 export default function handler(
