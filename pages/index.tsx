@@ -93,6 +93,8 @@ const Home: NextPage = () => {
     })
     setOpenedWindows([...openedWindows]);
 
+    console.log(openedWindows)
+
   }
 
   const triggerWebsitesClose = () => {
@@ -104,6 +106,8 @@ const Home: NextPage = () => {
     setOpenedWindows([]);
 
   }
+
+  console.log(openedWindows)
 
   return (
     <div className={styles.container}>
