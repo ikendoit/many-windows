@@ -1,6 +1,7 @@
-import Amplify, { withSSRContext } from 'aws-amplify'
+import Amplify, { withSSRContext, graphqlOperation } from 'aws-amplify'
 import config from "../aws-exports" // gitignored
-import { TabGroup } from '../models';
+import { createTabGroup, updateTabGroup } from '../src/graphql/mutations';
+import { getTabGroup } from '../src/graphql/queries';
 
 // Amplify.Logger.LOG_LEVEL = 'DEBUG'
 
@@ -17,8 +18,11 @@ interface upsertTabGroupsInterface {
 }
 
 const upsertTabGroups = async (params: upsertTabGroupsInterface) => {
-  const { DataStore } = withSSRContext();
-  let tabGroup = await DataStore.query(TabGroup, params.id)
+  const { API } = withSSRContext();
+  let tabGroupQueryResponse = await API.graphql(graphqlOperation(getTabGroup, {
+    id: params.id
+  }))
+  const tabGroup = tabGroupQueryResponse.data.getTabGroup
 
   let insertResponse = null
   let updateResponse = null
@@ -28,25 +32,33 @@ const upsertTabGroups = async (params: upsertTabGroupsInterface) => {
 
     console.log("Creating a new tab group");
 
-    insertResponse = await DataStore.save(
-      new TabGroup({
+    insertResponse = await API.graphql(graphqlOperation(createTabGroup, {
+      input: {
         "data": params.data,
         "encrypted_with_password": params.encrypted_with_password
-      })
-    );
+      }
+    }))
 
   } else {
 
     console.log("Updating existing tab group");
 
-    updateResponse = await DataStore.save(TabGroup.copyOf(tabGroup, item => {
-      item.data = params.data;
-      item.encrypted_with_password = params.encrypted_with_password;
-    }));
+    updateResponse = await API.graphql(graphqlOperation(updateTabGroup, {
+      input: {
+        "id": params.id,
+        "data": params.data,
+        "encrypted_with_password": params.encrypted_with_password,
+        "_version": tabGroup._version
+      }
+    }))
 
   }
 
-  return insertResponse || updateResponse
+  if (insertResponse !== null) {
+    return insertResponse.data.createTabGroup
+  } else {
+    return updateResponse.data.updateTabGroup
+  }
 
 }
 

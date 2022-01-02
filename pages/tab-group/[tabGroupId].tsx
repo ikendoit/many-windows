@@ -2,11 +2,12 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import Home from '../index'
 import serverTools from "../../server-components"
 import { HomeComponentProps, PaneWindowsTab } from '../../types/ui-components'
-import { TabGroup } from '../../models'
 import UnlockRequired from '../../ui-components/UnlockRequiredComponent'
 import { useState } from 'react'
 import { HydratedTabGroupLocked, HydratedTabGroupUnLocked } from '../../types/api-components'
 import { message } from 'antd'
+import { graphqlOperation } from 'aws-amplify'
+import { getTabGroup } from '../../src/graphql/queries'
 
 export default function Post(props: HomeComponentProps) {
 
@@ -52,8 +53,11 @@ export default function Post(props: HomeComponentProps) {
 export async function getServerSideProps(context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<HomeComponentProps>> {
 
   try {
-    const { DataStore } = serverTools.configuredAwsWithSSRContext();
-    const tabGroup = await DataStore.query(TabGroup, context.query.tabGroupId)
+    const { API } = serverTools.configuredAwsWithSSRContext();
+    const tabGroupQueryResponse = await API.graphql(graphqlOperation(getTabGroup, {
+      id: context.query.tabGroupId
+    }))
+    const tabGroup = tabGroupQueryResponse.data.getTabGroup
     let unlocked = true;
 
     // Both these should be true when encrypted, using "or" just in case
