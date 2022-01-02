@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "TabGroups": {
-            "name": "TabGroups",
+        "TabGroup": {
+            "name": "TabGroup",
             "fields": {
                 "id": {
                     "name": "id",
@@ -13,21 +13,14 @@ export const schema = {
                 "data": {
                     "name": "data",
                     "isArray": false,
-                    "type": "AWSJSON",
-                    "isRequired": false,
+                    "type": "String",
+                    "isRequired": true,
                     "attributes": []
                 },
-                "url": {
-                    "name": "url",
+                "encrypted_with_password": {
+                    "name": "encrypted_with_password",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "access_password_hash": {
-                    "name": "access_password_hash",
-                    "isArray": false,
-                    "type": "String",
+                    "type": "Boolean",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -54,27 +47,11 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
                 }
             ]
         }
     },
     "enums": {},
     "nonModels": {},
-    "version": "0c6e7efd76d944c052e90b835f68c0d1"
+    "version": "157b09673aed1b6147844d87ad88330c"
 };

@@ -1,6 +1,9 @@
-type TabGroups @model @auth(rules: [{allow: public}]) {
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } }
+
+type TabGroup @model {
   id: ID!
-  data: AWSJSON
-  url: String
-  access_password_hash: String
+  data: String!
+  encrypted_with_password: Boolean
 }

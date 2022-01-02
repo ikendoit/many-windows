@@ -4,8 +4,8 @@ import { schema } from './schema';
 
 
 
-const { TabGroups } = initSchema(schema);
+const { TabGroup } = initSchema(schema);
 
 export {
-  TabGroups
+  TabGroup
 };
