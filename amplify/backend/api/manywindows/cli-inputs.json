@@ -3,21 +3,23 @@
   "serviceConfiguration": {
     "apiName": "manywindows",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-4e3c72cf-fa2b-417a-b1b8-705c74578069/amplify/backend/api/manywindows/schema.graphql",
+    "gqlSchemaPath": "/home/ken/Documents/Work/many-windows/amplify/backend/api/manywindows/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "keyDescription": "api key description",
-      "expirationTime": 30
+      "expirationTime": 7
     },
-    "additionalAuthTypes": [
-      {
-        "mode": "AWS_IAM"
-      }
-    ],
     "conflictResolution": {
       "defaultResolutionStrategy": {
         "type": "AUTOMERGE"
-      }
+      },
+      "perModelResolutionStrategy": [
+        {
+          "resolutionStrategy": {
+            "type": "AUTOMERGE"
+          },
+          "entityName": "TabGroup"
+        }
+      ]
     }
   }
 }

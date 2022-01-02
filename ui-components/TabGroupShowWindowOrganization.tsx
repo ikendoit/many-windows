@@ -12,6 +12,7 @@ interface TabGroupShowWindowOrganizationProps {
   setPaneWindowTabIndexInFocusAndRerender: (e: number) => void
   setPaneWindowsTabsAndRerender: (e: PaneWindowsTab[]) => void
   setPaneWindowIndexAndRerender: (e: number) => void
+  closeAllOpenedWindows: () => void
   paneWindowIndexInFocus: number
 }
 
@@ -128,6 +129,7 @@ const TabGroupShowWindowOrganization: React.FC<TabGroupShowWindowOrganizationPro
 
   const onChangeTabPane = async (activeKey: string) => {
     setPaneWindowTabIndexInFocusAndRerender(parseInt(activeKey))
+    props.closeAllOpenedWindows()
   };
 
   const onEdit = (targetKey: any | OnChangeUpdateRecordAttributeAction, action: string) => {
