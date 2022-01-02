@@ -180,6 +180,7 @@ function Home(props: HomeComponentProps) {
       <Head>
         <meta name="description" content="Many Windows, Tool to manage and open multiple websites organized on your whole screen" />
         <link rel="icon" href="/favicon.ico" />
+        <title>Many Windows</title>
       </Head>
       <HeaderBarComponent
         changeVisibility={changeVisibility}
@@ -188,7 +189,6 @@ function Home(props: HomeComponentProps) {
         tabGroupIsSavedToCloud={paneWindowsTabsMeta.id !== 'null'}
         tabGroupCanBeSaved={true}
       />
-      <title>Many Windows</title>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome back to <b>Many Windows</b>
