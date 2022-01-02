@@ -58,7 +58,7 @@ function HeaderBarComponent(props: HeaderBarComponentProps) {
       <Button disabled={!props.tabGroupCanBeSaved} className={styles.header_menu_button} onClick={() => props.saveThisTabGroup()}><CopyOutlined /> Save this group</Button>
       {
         props.tabGroupIsEncrypted === true ?
-          <Button disabled={!props.tabGroupIsSavedToCloud} className={styles.header_menu_button} onClick={props.changeVisibility('PUBLIC')}><TeamOutlined /> Make Public</Button>
+          <Button disabled={!props.tabGroupIsSavedToCloud} className={styles.header_menu_button} onClick={() => props.changeVisibility('PUBLIC')()}><TeamOutlined /> Make Public</Button>
           : <Button disabled={!props.tabGroupIsSavedToCloud} className={styles.header_menu_button} onClick={showModal}><UserOutlined /> Make Private</Button>
       }
 
