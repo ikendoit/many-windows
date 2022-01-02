@@ -11,7 +11,9 @@ import { getTabGroup } from '../../src/graphql/queries'
 
 export default function Post(props: HomeComponentProps) {
 
-  if (props.currentTabGroup === null) {
+  const [currentTabGroup, setCurrentTabGroup] = useState<HydratedTabGroupUnLocked | HydratedTabGroupLocked | null>(props.currentTabGroup);
+
+  if (currentTabGroup === null) {
     message.error("Many Windows View Not found, using default view")
     return (
       <Home
@@ -19,8 +21,6 @@ export default function Post(props: HomeComponentProps) {
       />
     )
   }
-
-  const [currentTabGroup, setCurrentTabGroup] = useState<HydratedTabGroupUnLocked | HydratedTabGroupLocked>(props.currentTabGroup);
 
   const unlockTabGroupData = (newData: PaneWindowsTab[]) => {
 
