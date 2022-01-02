@@ -15,8 +15,8 @@ export const DEFAULT_TAB_GROUP: HydratedTabGroupUnLocked = {
         se: [19, 9]
       },
       {
-        link: 'https://vietnamnet.vn',
-        title: 'Vietnam net',
+        link: 'https://cbc.ca',
+        title: 'CBC news',
         nw: [10, 10],
         se: [19, 19]
       },
@@ -26,28 +26,26 @@ export const DEFAULT_TAB_GROUP: HydratedTabGroupUnLocked = {
     tabTitle: "Finance",
     tabContent: [{
         link: 'https://github.com/ikendoit',
-        title: 'Phone',
+        title: 'Bank',
+        nw: [0, 0],
+        se: [9, 7]
+      }
+    ]
+  },
+  {
+    tabTitle: "Cost tracking",
+    tabContent: [{
+        link: 'https://github.com/ikendoit',
+        title: 'Water Report',
         nw: [0, 0],
         se: [9, 7]
       },
       {
         link: 'https://github.com/ikendoit',
-        title: 'Internet',
-        nw: [0, 12],
-        se: [9, 19]
-      },
-      {
-        link: 'https://scotiabank.com/ikendoit',
-        title: 'Bank',
-        nw: [10, 0],
-        se: [19, 9]
-      },
-      {
-        link: 'https://github.com/ikendoit',
-        title: 'Electricity',
+        title: 'Phone Report',
         nw: [10, 10],
         se: [19, 19]
-      },
+      }
     ]
   },
 ]}
