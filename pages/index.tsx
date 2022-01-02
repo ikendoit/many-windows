@@ -3,6 +3,7 @@ import { Button, message } from 'antd'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import serverTools from "../server-components"
 
 // UI Components
 import {
@@ -127,17 +128,12 @@ function Home(props: HomeComponentProps) {
 
     }
 
-    // send to server
-    const responseRaw = await fetch(`${location.origin}/api/tab_groups/${paneWindowsTabsMeta.id}`, {
-      method: "POST",
-      body: JSON.stringify({
-        id: paneWindowsTabsMeta.id,
-        encrypted_with_password: overwriteEncryptedWithPassword,
-        data: paneWindowsTabsDataToUpload
-      })
+    const responseJson = await serverTools.upsertTabGroups({
+      id: paneWindowsTabsMeta.id,
+      encrypted_with_password: overwriteEncryptedWithPassword,
+      data: paneWindowsTabsDataToUpload
     })
 
-    const responseJson = await responseRaw.json()
 
     navigator.clipboard.writeText(`${location.origin}/tab-group/${responseJson.id}`);
     location.href = `${location.origin}/tab-group/${responseJson.id}`
