@@ -46,8 +46,6 @@ const upsertTabGroups = async (params: upsertTabGroupsInterface) => {
 
   }
 
-  console.log('response: ', insertResponse || updateResponse)
-
   return insertResponse || updateResponse
 
 }

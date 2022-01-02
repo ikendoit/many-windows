@@ -6,10 +6,18 @@ import { TabGroup } from '../../models'
 import UnlockRequired from '../../ui-components/UnlockRequiredComponent'
 import { useState } from 'react'
 import { HydratedTabGroupLocked, HydratedTabGroupUnLocked } from '../../types/api-components'
+import { message } from 'antd'
 
 export default function Post(props: HomeComponentProps) {
 
-  if (props.currentTabGroup === null) throw new Error("Error #TGI-10")
+  if (props.currentTabGroup === null) {
+    message.error("Many Windows View Not found, using default view")
+    return (
+      <Home
+        currentTabGroup={null}
+      />
+    )
+  }
 
   const [currentTabGroup, setCurrentTabGroup] = useState<HydratedTabGroupUnLocked | HydratedTabGroupLocked>(props.currentTabGroup);
 
