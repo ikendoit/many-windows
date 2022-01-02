@@ -48,16 +48,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext): Pr
     const tabGroup = await DataStore.query(TabGroup, context.query.tabGroupId)
     let unlocked = true;
 
-    // fail safe, in perfect world, both these should be true when encrypted
+    // Both these should be true when encrypted, using "or" just in case
     if (tabGroup.encrypted_with_password === true || tabGroup.data.match('^encrypted_')) {
       unlocked = false;
-      console.log("encrypted data")
-      // check local storage, if this id exists, decrypt data with that. 
-      console.log("checking local storage for existing passwords")
-      // if local storage is empty, store as string so we can prompt user later
-      console.log("If password exists for this id, try to decrypt it it.")
-
-      console.log('setting unlocked: true/false')
     }
 
     if (unlocked) {
