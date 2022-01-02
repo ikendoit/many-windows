@@ -57,6 +57,7 @@ const TabGroupShowWindowOrganization: React.FC<TabGroupShowWindowOrganizationPro
                   style={{width: '60%'}}
                   id={`${ID_INPUT_FIELD_ATTRIBUTE_EDIT}__${record.key}`}
                   defaultValue={text}
+                  onPressEnter={() => onEdit(null, 'updateRecordAttribute')}
                   prefix={
                     <div> 
                       <span 
@@ -92,6 +93,7 @@ const TabGroupShowWindowOrganization: React.FC<TabGroupShowWindowOrganizationPro
                 <Input 
                   style={{width: '60%'}}
                   id={`${ID_INPUT_FIELD_ATTRIBUTE_EDIT}__${record.key}`}
+                  onPressEnter={() => onEdit(null, 'updateRecordAttribute')}
                   defaultValue={text}
                   prefix={
                     <div> 
@@ -242,6 +244,7 @@ const TabGroupShowWindowOrganization: React.FC<TabGroupShowWindowOrganizationPro
                 <Input 
                   style={{width: '60%'}}
                   id={`${ID_INPUT_TAB_PANE_ATTRIBUTE_EDIT}__${paneIndex}`}
+                  onPressEnter={() => onEdit(null, 'updateTabPaneTitle')}
                   defaultValue={pane.tabTitle}
                   prefix={
                     <div> 

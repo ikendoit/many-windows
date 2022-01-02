@@ -33,7 +33,7 @@ export const DEFAULT_TAB_GROUP: HydratedTabGroupUnLocked = {
     ]
   },
   {
-    tabTitle: "Cost tracking",
+    tabTitle: "Cost-tracking",
     tabContent: [{
         link: 'https://github.com/ikendoit',
         title: 'Water Report',

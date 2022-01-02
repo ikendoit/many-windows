@@ -1,11 +1,12 @@
 import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Button, Input, message } from 'antd'
+import { Input, message } from 'antd'
 import {
-  CopyOutlined, TeamOutlined, UnlockOutlined 
+  UnlockOutlined 
 } from '@ant-design/icons';
 import {decryptData, PaneWindowsTab} from '../types/ui-components/index'
+import HeaderBarComponent from './HeaderBarComponent';
 
 const { Search } = Input;
 const passwordInputSuffix = (
@@ -72,10 +73,13 @@ function UnlockRequiredComponent(props: UnlockRequiredComponentProps) {
         <meta name="description" content="Many Windows, Tool to manage and open multiple websites organized on your whole screen" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.header_menu}>
-        <Button className={`${styles.header_menu_button} ${styles.disabled_button}`}><CopyOutlined /> Save this group</Button>
-        <Button className={`${styles.header_menu_button} ${styles.disabled_button}`}><TeamOutlined /> Make Public</Button>
-      </div>
+      <HeaderBarComponent
+        changeVisibility={(visibility: "PUBLIC" | "PRIVATE") => async (password?: string) => {}}
+        saveThisTabGroup={() => {}}
+        tabGroupIsEncrypted={false}
+        tabGroupIsSavedToCloud={false}
+        tabGroupCanBeSaved={false}
+      />
       <title>Many Windows</title>
       <main className={styles.main}>
         <h1 className={styles.title}>

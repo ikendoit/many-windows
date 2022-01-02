@@ -1,8 +1,5 @@
 import React from 'react'
 import { Button, message } from 'antd'
-import {
-  CopyOutlined, TeamOutlined, UserOutlined
-} from '@ant-design/icons';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
