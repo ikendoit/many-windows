@@ -80,11 +80,13 @@ function Home(props: HomeComponentProps) {
     windowPanes.forEach(windowPane => {
       const height = windowPane.se[0] - windowPane.nw[0]
       const width = windowPane.se[1] - windowPane.nw[1]
+      const leftPadding = window.screenX >= 100 ? window.screenX : 0;
+      const topPadding = window.screenY >= 100 ? window.screenY : 0;
       const windowRef = window.open(windowPane.link, '_blank', configStringGenerate(
         unitCellHeight * height,
         unitCellWidth * width + unitCellWidth,
-        unitCellHeight * windowPane.nw[0],
-        unitCellWidth * windowPane.nw[1]
+        topPadding + unitCellHeight * windowPane.nw[0],
+        leftPadding + unitCellWidth * windowPane.nw[1]
       ))
 
       if (windowRef === null) {
