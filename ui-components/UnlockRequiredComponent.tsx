@@ -74,7 +74,7 @@ function UnlockRequiredComponent(props: UnlockRequiredComponentProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeaderBarComponent
-        changeVisibility={(visibility: "PUBLIC" | "PRIVATE") => async (password?: string) => {}}
+        changeVisibility={(_: "PUBLIC" | "PRIVATE") => async (_?: string) => {}}
         saveThisTabGroup={() => {}}
         tabGroupIsEncrypted={false}
         tabGroupIsSavedToCloud={false}

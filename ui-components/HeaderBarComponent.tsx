@@ -7,7 +7,7 @@ import {
 
 interface HeaderBarComponentProps {
   changeVisibility: (visibility: "PUBLIC" | "PRIVATE") => (password?: string) => Promise<void>
-  saveThisTabGroup: () => void
+  saveThisTabGroup: (overwriteEncryptedWithPassword: boolean, encryptionPassword: string) => void
   tabGroupIsEncrypted: boolean
   tabGroupIsSavedToCloud: boolean
   tabGroupCanBeSaved: boolean
@@ -55,7 +55,7 @@ function HeaderBarComponent(props: HeaderBarComponentProps) {
 
   return (
     <div className={styles.header_menu}>
-      <Button disabled={!props.tabGroupCanBeSaved} className={styles.header_menu_button} onClick={() => props.saveThisTabGroup()}><CopyOutlined /> Save this group</Button>
+      <Button disabled={!props.tabGroupCanBeSaved} className={styles.header_menu_button} onClick={() => props.saveThisTabGroup(props.tabGroupIsEncrypted, "")}><CopyOutlined /> Save this group</Button>
       {
         props.tabGroupIsEncrypted === true ?
           <Button disabled={!props.tabGroupIsSavedToCloud} className={styles.header_menu_button} onClick={() => props.changeVisibility('PUBLIC')()}><TeamOutlined /> Make Public</Button>

@@ -123,6 +123,14 @@ function Home(props: HomeComponentProps) {
   // avoid passing this override
   const saveThisTabGroup = async (overwriteEncryptedWithPassword: boolean = false, encryptionPassword: string = "") => {
 
+    if (overwriteEncryptedWithPassword === true && encryptionPassword === "") {
+      const localStoredPassword = localStorage.getItem(paneWindowsTabsMeta.id)
+      if (localStoredPassword === null) {
+        throw new Error("ERROR #STTG-129")
+      }
+      encryptionPassword = localStoredPassword
+    }
+
     let paneWindowsTabsDataToUpload = JSON.stringify(paneWindowsTabs);
     if (overwriteEncryptedWithPassword === true && encryptionPassword != "") {
       // generate encrypted data
