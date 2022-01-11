@@ -135,6 +135,8 @@ const TabGroupShowWindowOrganization: React.FC<TabGroupShowWindowOrganizationPro
   };
 
   const onEdit = (targetKey: any | OnChangeUpdateRecordAttributeAction, action: string) => {
+    
+    if ( typeof document === 'undefined' ) return;
 
     switch (action) {
       case "add": {
