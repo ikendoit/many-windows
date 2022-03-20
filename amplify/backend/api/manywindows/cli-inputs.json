@@ -6,7 +6,9 @@
     "gqlSchemaPath": "/home/ken/Documents/Work/many-windows/amplify/backend/api/manywindows/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 7
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-03-20T07:19:09.987Z",
+      "keyDescription": ""
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {
@@ -20,6 +22,7 @@
           "entityName": "TabGroup"
         }
       ]
-    }
+    },
+    "additionalAuthTypes": []
   }
 }
