@@ -9,7 +9,6 @@ import { getTabGroup } from '../src/graphql/queries';
 Amplify.configure({
   ...config,
   ssr: true,
-  authType: AUTH_TYPE.AWS_IAM
 });
 
 interface upsertTabGroupsInterface {

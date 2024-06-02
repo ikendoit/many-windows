@@ -15,6 +15,9 @@ export type ModelTabGroupConditionInput = {
   and?: Array< ModelTabGroupConditionInput | null > | null,
   or?: Array< ModelTabGroupConditionInput | null > | null,
   not?: ModelTabGroupConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
 };
 
 export type ModelStringInput = {
@@ -92,9 +95,12 @@ export type ModelTabGroupFilterInput = {
   id?: ModelIDInput | null,
   data?: ModelStringInput | null,
   encrypted_with_password?: ModelBooleanInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
   and?: Array< ModelTabGroupFilterInput | null > | null,
   or?: Array< ModelTabGroupFilterInput | null > | null,
   not?: ModelTabGroupFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelIDInput = {
@@ -115,9 +121,55 @@ export type ModelIDInput = {
 
 export type ModelTabGroupConnection = {
   __typename: "ModelTabGroupConnection",
-  items:  Array<TabGroup >,
+  items:  Array<TabGroup | null >,
   nextToken?: string | null,
   startedAt?: number | null,
+};
+
+export type ModelSubscriptionTabGroupFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  data?: ModelSubscriptionStringInput | null,
+  encrypted_with_password?: ModelSubscriptionBooleanInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionTabGroupFilterInput | null > | null,
+  or?: Array< ModelSubscriptionTabGroupFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export type ModelSubscriptionIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionStringInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
 };
 
 export type CreateTabGroupMutationVariables = {
@@ -214,7 +266,7 @@ export type ListTabGroupsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-    } >,
+    } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
@@ -240,10 +292,14 @@ export type SyncTabGroupsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-    } >,
+    } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
+};
+
+export type OnCreateTabGroupSubscriptionVariables = {
+  filter?: ModelSubscriptionTabGroupFilterInput | null,
 };
 
 export type OnCreateTabGroupSubscription = {
@@ -260,6 +316,10 @@ export type OnCreateTabGroupSubscription = {
   } | null,
 };
 
+export type OnUpdateTabGroupSubscriptionVariables = {
+  filter?: ModelSubscriptionTabGroupFilterInput | null,
+};
+
 export type OnUpdateTabGroupSubscription = {
   onUpdateTabGroup?:  {
     __typename: "TabGroup",
@@ -272,6 +332,10 @@ export type OnUpdateTabGroupSubscription = {
     _deleted?: boolean | null,
     _lastChangedAt: number,
   } | null,
+};
+
+export type OnDeleteTabGroupSubscriptionVariables = {
+  filter?: ModelSubscriptionTabGroupFilterInput | null,
 };
 
 export type OnDeleteTabGroupSubscription = {

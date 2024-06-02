@@ -1,21 +1,22 @@
 {
   "api": {
     "manywindows": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
       "output": {
         "authConfig": {
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "authenticationType": "API_KEY",
             "apiKeyConfig": {
+              "apiKeyExpirationDate": "2025-06-02T21:43:07.556Z",
               "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2023-03-20T07:19:09.987Z",
-              "description": ""
-            }
-          },
-          "additionalAuthenticationProviders": []
+              "description": "2024-06-02"
+            },
+            "authenticationType": "API_KEY"
+          }
         }
-      }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
     }
   }
 }

@@ -3,12 +3,11 @@
   "serviceConfiguration": {
     "apiName": "manywindows",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/home/ken/Documents/Work/many-windows/amplify/backend/api/manywindows/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 365,
-      "apiKeyExpirationDate": "2023-03-20T07:19:09.987Z",
-      "keyDescription": ""
+      "apiKeyExpirationDate": "2025-06-02T21:43:07.556Z",
+      "keyDescription": "2024-06-02"
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {
