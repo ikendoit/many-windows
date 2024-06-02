@@ -43,4 +43,8 @@ amplify push
 # A. If push successful, good, check webapp.
 # B. If UPDATE_FAILED cloud-formation not found API Key, follow https://github.com/aws-amplify/amplify-cli/issues/1450#issuecomment-567449897
 #      This is because Amplify auto-deletes expired key, which conflicts with cloud-formation expecting that key to still exists. Lolol.
+
+# Push up to github so Amplify can trigger and update Client Web
+git add . && git commit -m "<msg>"
+git push origin mainline
 ```
