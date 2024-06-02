@@ -1,4 +1,4 @@
-import Amplify, { withSSRContext, graphqlOperation } from 'aws-amplify'
+import Amplify, { withSSRContext, graphqlOperation, AUTH_TYPE} from 'aws-amplify'
 import config from "../aws-exports" // gitignored
 import { createTabGroup, updateTabGroup } from '../src/graphql/mutations';
 import { getTabGroup } from '../src/graphql/queries';
@@ -9,6 +9,7 @@ import { getTabGroup } from '../src/graphql/queries';
 Amplify.configure({
   ...config,
   ssr: true,
+  authType: AUTH_TYPE.AWS_IAM
 });
 
 interface upsertTabGroupsInterface {
