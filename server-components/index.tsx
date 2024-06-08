@@ -1,5 +1,5 @@
 import Amplify, { withSSRContext, graphqlOperation } from 'aws-amplify'
-import config from "../aws-exports" // gitignored
+import config from "./aws-exports" // gitignored
 import { createTabGroup, updateTabGroup } from '../src/graphql/mutations';
 import { getTabGroup } from '../src/graphql/queries';
 
