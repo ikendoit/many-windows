@@ -37,7 +37,6 @@ Signal: When many-windows.com shows "not found"
 
 ```
 amplify pull # sync up local env with Amplify cloud
-amplify env pull  # download aws-exports.ts file
 amplify update api
 # Select update new API Key, 365 days
 amplify push
